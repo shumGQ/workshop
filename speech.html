@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Говорилка</title>
+</head>
+<body>
+	<p id="result"></p>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
+	<script type="text/javascript">
+		// Создаем распознаватель
+		if (annyang) {
+			annyang.setLanguage('ru');
+			var commands = {
+	  			'Привет Джарвис': function() {
+					$('#result').append("Привет Рома! Сделать чашечку кофе или взломать пентагон? ");
+				},
+				'Руки верх!': function() {
+					speechSynthesis.speak(
+					  new SpeechSynthesisUtterance('Асталависта Беби!')
+					);
+				}
+
+	  		}
+			annyang.addCommands(commands);
+			annyang.start({ autoRestart: true, continuous: false });
+		}
+	</script>
+</body>
+</html>
